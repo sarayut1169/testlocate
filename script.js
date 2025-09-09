@@ -4,11 +4,12 @@ function sendLocation() {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
 
-      console.log("ละติจูด:", latitude);
-      console.log("ลองจิจูด:", longitude);
+      // 👇 แสดงตำแหน่งบนหน้าเว็บ
+      const locationDiv = document.getElementById("locationDisplay");
+      locationDiv.innerHTML = `ละติจูด: ${latitude.toFixed(6)}<br>ลองจิจูด: ${longitude.toFixed(6)}`;
 
       // ✅ ส่งไปยัง API ที่ต้องการ
-      fetch('http://localhost:5047/api/locate/get', {
+      fetch('https://a595f27940a4.ngrok-free.app/api/locate/get', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
